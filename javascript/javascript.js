@@ -26,16 +26,17 @@ $(document).ready(function () {
                 var dogDiv = $("<div>");
 
                 var dogImage = $("<img>");
-
-                dogImage.attr("src", results[i].images.fixed_height.url);
-
-                //add rating 
-                dogDiv.append(p);
+                dogImage.addClass("pictures");
+                dogImage.attr("src", results[i].images.fixed_height_still.url);
+                dogImage.attr("data-still", results[i].images.fixed_height_still.url);
+                dogImage.attr("data-animate", results[i].images.fixed_height.url);
+                dogImage.attr("data-state", "still");
 
                 //add image 
                 dogDiv.append(dogImage);
-                console.log("dogDiv:" + dogDiv);
 
+                //add rating 
+                dogDiv.append(p);
                 //Prepend dogDiv to the HTMLpage in the "gifs area"
                 $("#gifs").prepend(dogDiv);
             }
@@ -87,12 +88,11 @@ $(document).ready(function () {
         renderButtons();
     });
 
-    // Function for displaying the dog info using $(document).on to add dynamically generated elements
-    $(document).on("click", ".dogs", displayDogInfo);
+    
 
     //$("#gifs").on("click", function () {
 
-    $(document).on("click", "#gifs", function () {
+    function startGif () {
         var state = $(this).attr("data-state");
         console.log(state);
         
@@ -104,9 +104,11 @@ $(document).ready(function () {
             $(this).attr("src", $(this).attr("data-still"));
             $(this).attr("data-state", "still");
         }
-    });
+    };
 
+    $(document).on("click", ".dogs", displayDogInfo);
+    $(document).on("click", ".pictures", startGif);
 
 // Calling the renderButtons function to display the initial buttons
-renderButtons();
+    renderButtons();
 });
