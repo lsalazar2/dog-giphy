@@ -14,10 +14,11 @@ $(document).ready(function () {
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            console.log(response);
-            console.log(queryURL);
+
             // Constructing HTML containing the dog gif & rating
             var results = response.data;
+            //clear out the gifs previous data entry
+            $("#gifs").empty();
 
             for (i = 0; i < results.length; i++) {
                 //Display gif rating
@@ -26,6 +27,7 @@ $(document).ready(function () {
                 var dogDiv = $("<div>");
 
                 var dogImage = $("<img>");
+
                 dogImage.addClass("pictures");
                 dogImage.attr("src", results[i].images.fixed_height_still.url);
                 dogImage.attr("data-still", results[i].images.fixed_height_still.url);
@@ -37,6 +39,7 @@ $(document).ready(function () {
 
                 //add rating 
                 dogDiv.append(p);
+
                 //Prepend dogDiv to the HTMLpage in the "gifs area"
                 $("#gifs").prepend(dogDiv);
             }
@@ -72,7 +75,6 @@ $(document).ready(function () {
         }
     }
 
-
     // This function adds dog type button to screen
     $("#add-dog").on("click", function (event) {
         event.preventDefault();
@@ -82,7 +84,6 @@ $(document).ready(function () {
 
         // Adding the dog from the textbox to our array
         dogType.push(dog);
-        console.log("dogType added:" + dogType);
 
         //Calling renderButtons which handles the processing of our movie array
         renderButtons();
