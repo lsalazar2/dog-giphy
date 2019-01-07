@@ -18,11 +18,17 @@ p {
     height: 10px;
     border-radius: 90%;
 }
+.pictures {
+    width: 75%;
+    height: 75%;
+}
 
-
-.container{
+#gifs {
+    display: flex;
+    flex-wrap: wrap;
+}
+.gif-area{
     float: left;
-    width: 33%;
     padding: 50px;
 }
 
