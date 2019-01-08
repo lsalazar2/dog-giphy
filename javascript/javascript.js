@@ -14,7 +14,7 @@ $(document).ready(function () {
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-
+            console.log(response.data);
             // Constructing HTML containing the dog gif & rating
             var results = response.data;
             //clear out the gifs previous data entry
@@ -77,16 +77,23 @@ $(document).ready(function () {
 
     // This function adds dog type button to screen
     $("#add-dog").on("click", function (event) {
-        event.preventDefault();
+        event.preventDefault(); //prevent refreshing page
 
         // This line grabs the input from the textbox
         var dog = $("#dog-input").val().trim();
-
+         if (dog == "") {
+            $("#gifs").empty();
+            $("#gifs").prepend("<h1> Not a valid input</h1>");
+         }
+         else {
         // Adding the dog from the textbox to our array
         dogType.push(dog);
 
         //Calling renderButtons which handles the processing of our movie array
         renderButtons();
+        //$("#dog-input").val()= "";
+         }
+
     });
 
     
