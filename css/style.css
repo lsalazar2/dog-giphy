@@ -10,7 +10,11 @@ p {
     font-weight: bold;
     font-size: 16px;
 }
-
+h1 {
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
 #dogs{
     font: 16px white;
     background-color: aqua;
@@ -18,11 +22,17 @@ p {
     height: 10px;
     border-radius: 90%;
 }
+.pictures {
+    width: 75%;
+    height: 75%;
+}
 
-
-.container{
+#gifs {
+    display: flex;
+    flex-wrap: wrap;
+}
+.gif-area{
     float: left;
-    width: 33%;
     padding: 50px;
 }
 
